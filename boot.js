@@ -176,9 +176,9 @@ let selectedPiece = {
   spacem99: false,
   spacem110: false
 };
-let whitePieces = document.getElementsByClassName("whitePiece");
-let blackPieces = document.getElementsByClassName("blackPiece");
-let spots = document.getElementsByClassName("spot");
+let whitePieces = document.getElementsByClassName("white-piece");
+let blackPieces = document.getElementsByClassName("black-piece");
+let spots = document.getElementsByClassName("piece");
 draw();
 
 //translates the FEN code input into the board layout
@@ -186,11 +186,11 @@ function draw() {
   j = 1;
   for (let i = 0; i <= FEN.length; i++) {
     if (FEN[i] == "b") {
-      document.getElementById("*" + (i + 1)).classList.toggle("blackPiece");
+      document.getElementById("*" + (i + 1)).classList.toggle("black-piece");
     } else if (FEN[i] == "w") {
-      document.getElementById("*" + (i + 1)).classList.toggle("whitePiece");
+      document.getElementById("*" + (i + 1)).classList.toggle("white-piece");
     } else if (FEN[i] == "k") {
-      document.getElementById("*" + (i + 1)).id = "kingPiece";
+      document.getElementById("*" + (i + 1)).id = "king-piece";
     }
     j++;
   }
@@ -211,7 +211,7 @@ for (var i = 0; i < blackPieces.length; i++) {
 }
 
 //gives the king piece on event listeners.
-document.getElementById("kingPiece").addEventListener("click", function () {
+document.getElementById("king-piece").addEventListener("click", function () {
   console.log("The King!");
   scream();
 });

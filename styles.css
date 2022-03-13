@@ -1,10 +1,11 @@
 #board {
   width: 685px;
   height: 685px;
-  margin: 20px;
+  margin: 100px auto;
   border: 25px solid #212121;
   background-color: #212121;
   border-radius: 3px;
+  text-align: center;
 }
 
 .black {
@@ -24,6 +25,15 @@
   background-color: #426d41;
 }
 
+.piece {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+}
+
 .white {
   float: left;
   width: 60px;
@@ -41,42 +51,28 @@
   background-color: #a4bca6;
 }
 
-.whitePiece {
+.white-piece {
   background-color: #ffffff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  border: 5px solid #bcaaa4;
+  border-color: #bcaaa4;
 }
 
-.whitePiece:hover {
-  border: 5px solid #a4bca6;
+.piece:hover {
+  border-color: #a4bca6;
 }
 
-.blackPiece:hover {
-  border: 5px solid #a4bca6;
-}
-
-.blackPiece {
+.black-piece {
   background-color: #000000;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  border: 5px solid #bcaaa4;
+  border-color: #bcaaa4;
 }
 
-#kingPiece {
+#king-piece {
   background-color: #ffffff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  border: 5px solid #ffd54f;
+  border-color: #ffd54f;
 }
 
+/**
 .blackFollow {
   background-color: #000000;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  border: 5px solid #bcaaa4;
+  border-color: #bcaaa4;
 }
+**/
