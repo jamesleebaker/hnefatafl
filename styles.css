@@ -51,7 +51,7 @@
   background-color: #a4bca6;
 }
 
-.white-piece {
+.defender {
   background-color: #ffffff;
   border-color: #bcaaa4;
 }
@@ -60,9 +60,13 @@
   border-color: #a4bca6;
 }
 
-.black-piece {
+.attacker {
   background-color: #000000;
   border-color: #bcaaa4;
+}
+
+.black:hover .piece {
+  border-color: transparent;
 }
 
 #king-piece {
