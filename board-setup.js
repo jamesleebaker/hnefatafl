@@ -1,13 +1,8 @@
 const NUMBER_OF_CELLS = 121;
+const WIN_SPOTS_CELL_NUMERS = [1, 11, 111, 121];
+const KING_SPOT = 61;
 
-const WIN_SPOTS = [
-  [1, 1],
-  [1, 11],
-  [11, 1]
-  [11, 11]
-];
-
-const ATTACKER_MATRIX = {
+const ATTACKER_DEFAULT_POSITIONS = {
   leftGroup: [
     [1, 4],
     [1, 5],
@@ -44,7 +39,7 @@ const ATTACKER_MATRIX = {
   ],
 }
 
-const DEFENDER_MATRIX = [
+const DEFENDER_DEFAULT_POSITIONS = [
   [6, 4],
   [5, 5],
   [6, 5],
@@ -60,40 +55,78 @@ const DEFENDER_MATRIX = [
   [6, 8],
 ];
 
-const KING_PIECE = [6,6];
-
-function mapCellIndexToCoordinates(index) {
-  if (index > NUMBER_OF_CELLS) {
+function mapCellIndexToCoordinates(cellIndex) {
+  if (cellIndex > NUMBER_OF_CELLS) {
     throw new RangeError('The cell is outside the number of cells in the board')
   }
 
-  if (index < 11) { 
+  if (cellIndex < 11) { 
     return {
-      x: index,
+      x: cellIndex,
       y: 1,
     };
   }
   
-  if (index % 11 == 0){
+  if (cellIndex % 11 == 0) {
     return {
       x: 11,
-      y: Math.ceil(index / 11),
+      y: Math.ceil(cellIndex / 11),
     }
   }
 
   return {
-    x: index % 11,
-    y: Math.ceil(index / 11),
+    x: cellIndex % 11,
+    y: Math.ceil(cellIndex / 11),
   }
 }
 
-function generateCells() {
+function mapCoordinatesToCellIndex(x, y) {
+  if (y === 1) {
+    return x;
+  }
+
+  return ((y - 1) * 11) + x;
+}
+
+function isWinSpot(cellNumber) {
+  return WIN_SPOTS_CELL_NUMERS.indexOf(cellNumber) > -1;
+}
+
+function generateBoardCellElements() {
   const boardElement = document.getElementById('board');
   const boardFragment = document.createDocumentFragment();
 
-  for(let i = 1; i <= NUMBER_OF_CELLS; i++) {
-    const currentCellCoordinates = mapCellIndexToCoordinates(i);
+  for (let i = 1; i <= NUMBER_OF_CELLS; i++) {
+    const { x, y }= mapCellIndexToCoordinates(i);
+    const cellElement = document.createElement('div');
+    cellElement.setAttribute('data-x', x);
+    cellElement.setAttribute('data-y', y);
+    cellElement.classList.add('cell');
+
+    if (isWinSpot(i)) {
+      cellElement.classList.add('black');
+      cellElement.classList.add('win');
+      boardFragment.appendChild(cellElement);
+      continue;
+    } 
+
+    if (i === KING_SPOT) {
+      cellElement.classList.add('black');
+      boardFragment.appendChild(cellElement);
+      continue;
+    }
+
+    // TODO: Improve semantic of naming
+    cellElement.classList.add('white');
+    boardFragment.appendChild(cellElement);
   }
+
+  boardElement.appendChild(boardFragment);
 }
 
-generateCells();
+function generatesPlayerPieces() {
+  console.log('TO DO!');
+}
+
+generateBoardCellElements();
+generatesPlayerPieces();

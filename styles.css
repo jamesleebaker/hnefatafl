@@ -6,16 +6,16 @@
   background-color: #212121;
   border-radius: 3px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .black {
-  float: left;
   width: 60px;
   height: 60px;
   background-color: #6d4c41;
   font-size: 50px;
   text-align: center;
-  display: table-cell;
   vertical-align: middle;
   border: 1px solid #212121;
   border-radius: 3px;
@@ -35,13 +35,11 @@
 }
 
 .white {
-  float: left;
   width: 60px;
   height: 60px;
   background-color: #bcaaa4;
   font-size: 50px;
   text-align: center;
-  display: table-cell;
   vertical-align: middle;
   border: 1px solid #212121;
   border-radius: 3px;
@@ -58,6 +56,7 @@
 
 .piece:hover {
   border-color: #a4bca6;
+  cursor: pointer;
 }
 
 .attacker {
